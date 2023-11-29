@@ -26,8 +26,10 @@ const UserSchema = new Schema({
   },
   userRole: {
     type: String,
+    required: true,
+    default: 'undefined',
     lowercase: true,
-    enum: ['housekeeping', 'houseman', 'maintenance', 'hkmanager', 'gralmanager'],
+    enum: ['housekeeping', 'houseman', 'maintenance', 'hkmanager', 'gralmanager', 'undefined'],
     trim: true,
     maxlength: 15,
     minlength: 5
@@ -35,8 +37,10 @@ const UserSchema = new Schema({
   dob: {
     type: String,
     trim: true,
+    required: true,
+    default: 'undefined',
     maxlength: 10,
-    minlength: 10
+    minlength: 9
   }
 }, {
   versionKey: false,

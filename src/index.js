@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const path = require('path');
 const connectDB = require('./database');
+const userRouter = require('./routes/users.routes')
 
 const app = express();
 require('dotenv').config();
@@ -22,6 +23,9 @@ app.use(express.json());
 app.use(express.urlencoded( { extended: true }));
 
 app.use(express.static(path.join(__dirname, './../public')));
+
+//routes
+app.use('/api/silkariProject/users', userRouter);
 
 
 
