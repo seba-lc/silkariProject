@@ -6,14 +6,14 @@ const RoomSchema = new Schema({
     trim: true,
     required: true,
     minlength: 2,
-    maxlength: 3
+    maxlength: 15
   },
-  roomIssues: { //Aca tengo que hacer el type: Schema.Types.ObjectId (que no me acuerdo el nombre de la acción) que me linkee a Issue
-    type: String,
-    trim: true,
-    lowercase: true,
-    maxlength: 300
-  },
+  //EN PRINCIPIO NO ES NECESARIO, LO ELIMINO POR AHORA
+  
+  // roomIssues: { //Aca tengo que hacer el type: Schema.Types.ObjectId (que no me acuerdo el nombre de la acción) que me linkee a Issue
+  //   type: [Schema.Types.ObjectId],
+  //   default: []
+  // },
   roomStatus: {
     type: String,
     uppercase: true,

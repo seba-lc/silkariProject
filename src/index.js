@@ -3,7 +3,12 @@ const morgan = require('morgan');
 const cors = require('cors');
 const path = require('path');
 const connectDB = require('./database');
-const userRouter = require('./routes/users.routes')
+const userRouter = require('./routes/users.routes');
+const bookingRouter = require('./routes/bookings.routes');
+const issueRouter = require('./routes/issues.routes');
+const roomRouter = require('./routes/rooms.routes');
+const itemRouter = require('./routes/items.routes');
+const stockRouter = require('./routes/stock.routes');
 
 const app = express();
 require('dotenv').config();
@@ -26,6 +31,11 @@ app.use(express.static(path.join(__dirname, './../public')));
 
 //routes
 app.use('/api/silkariProject/users', userRouter);
+app.use('/api/silkariProject/bookings', bookingRouter);
+app.use('/api/silkariProject/issues', issueRouter);
+app.use('/api/silkariProject/rooms', roomRouter);
+app.use('/api/silkariProject/items', itemRouter);
+app.use('/api/silkariProject/stock', stockRouter);
 
 
 

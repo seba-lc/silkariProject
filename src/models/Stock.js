@@ -1,6 +1,6 @@
 const { model, Schema } = require('mongoose');
 
-const ProductStockSchema = new Schema({
+const StockSchema = new Schema({
   productName: {
     type: String,
     required: true,
@@ -8,6 +8,12 @@ const ProductStockSchema = new Schema({
     lowercase: true,
     minlength: 3,
     maxlength: 50
+  },
+  productCode: {
+    type: String, 
+    required: true,
+    trim: true,
+    maxlength: 40
   },
   area: {
     type: String,
@@ -22,18 +28,26 @@ const ProductStockSchema = new Schema({
     type: Number,
     required: true,
     max: 5000,
-    min: 0,
-    trim: true
+    min: -5000
   },
   entryDate: {
     type: String,
+    required: true,
     trim: true,
     maxlength: 10,
     minlength: 10
+  },
+  sign: { //email del usuario a cargo
+    type: String,
+    required: true,
+    trim: true,
+    unique: true,
+    minlength: 5,
+    maxlength: 50
   }
 }, {
   versionKey: false,
   timestamps: true
 });
 
-module.exports = model('ProductStock', ProductStockSchema);
+module.exports = model('Stock', StockSchema);

@@ -29,17 +29,23 @@ const IssueSchema = new Schema({
     minlength: 5,
     maxlength: 50
   },
-  partsUsed: { //Aca tengo que hacer el type: Schema.Types.ObjectId (que no me acuerdo el nombre de la acción)
-    type: String,
-    trim: true,
-    lowercase: true,
-    maxlength: 100
+  partsUsed: { //A esto lo linkeo con el modelo ProductUsed.
+    type: [Schema.Types.ObjectId],
+    default: []
   },
-  updates: { //voy a generar desde el frontend un comentario que venga con la fecha (dos entradas del front y una salida para el back)
+  updates: [{ //voy a generar desde el frontend un comentario que venga con la fecha (dos entradas del front y una salida para el back)
     type: String,
     trim: true,
     lowercase: true,
     maxlength: 300
+  }],
+  roomAsigned: {
+    type: String,
+    trim: true,
+    required: true,
+    minlength: 2,
+    maxlength: 15,
+    default: 'N/A'
   }
 }, {
   versionKey: false,
