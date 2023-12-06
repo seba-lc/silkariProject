@@ -7,10 +7,10 @@ const router = Router();
 const { newBooking, deleteBooking, getAllBookings } = bookingCtrl;
 
 router.route('/')
-  .post(/*checkToken, */newBooking) //aca se pedirá permiso de Admin
-  .get(/*checkToken, */getAllBookings); //idem
+  .post(checkToken, newBooking) //aca se pedirá permiso de Admin
+  .get(checkToken, getAllBookings); //idem
 
 router.route('/:id')
-  .delete(/*checkToken, */deleteBooking); //idem
+  .delete(checkToken, deleteBooking); //idem
 
 module.exports = router;

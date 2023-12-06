@@ -18,6 +18,23 @@ roomCtrl.createRoom = async (req, res) => {
   }
 }
 
+roomCtrl.createSilkariRooms = async (req, res) => {
+  try {
+    for(let i=1; i<90; i++) {
+      const newARoom = new Room({room: i.toString() + 'A'});
+      const newBRoom = new Room({room: i.toString() + 'B'});
+      await newARoom.save();
+      await newBRoom.save();
+    }
+    res.status(200).json({message: 'Silkari Rooms Added'})
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({
+      message: 'Error, try again later'
+    })
+  }
+}
+
 roomCtrl.getAllRooms = async (req, res) => {
   try {
     const rooms = await Room.find();
@@ -33,7 +50,7 @@ roomCtrl.getAllRooms = async (req, res) => {
 /* _id || roomStatus, guestIn || opcionales */
 roomCtrl.updateRoom = async (req, res) => {
   try {
-    const roomUpdate = await Room.findByIdAndUpdate(req.body._id, { roomStatus: req.body.roomStatus, guestIn: req.status.guestIn }) //quizás podría encontrarlo por habitación instead
+    const roomUpdate = await Room.findByIdAndUpdate(req.body._id, { roomStatus: req.body.roomStatus, guestIn: req.body.guestIn }, { new: true }) //quizás podría encontrarlo por habitación instead
     if(roomUpdate !== null) {
       return res.status(200).json({
         message: 'Room updated',
@@ -43,6 +60,21 @@ roomCtrl.updateRoom = async (req, res) => {
     res.status(201).json({
       message: 'Room not finded'
     })
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({
+      message: 'Error, try again later'
+    })
+  }
+}
+
+roomCtrl.deleteAllRooms = async (req, res) => {
+  try {
+    const rooms = await Room.find().select('_id');
+    rooms.forEach(async i => {
+      await Room.findByIdAndDelete(i._id);
+    });
+    res.status(200).json({message: 'All rooms deleted'});
   } catch (error) {
     console.log(error);
     res.status(400).json({

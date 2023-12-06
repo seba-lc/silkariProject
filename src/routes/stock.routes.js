@@ -7,12 +7,12 @@ const router = Router();
 const { getStockByCode, productEntry, deleteEntry } = stockCtrl;
 
 router.route('/:productCode')
-  .get(/*checkToken, */getStockByCode);
+  .get(checkToken, getStockByCode);
 
 router.route('/')
-  .post(/*checkToken, */productEntry);
+  .post(checkToken, productEntry);
 
 router.route('/:id')
-  .delete(/*checkToken, */deleteEntry);
+  .delete(checkToken, deleteEntry);
 
 module.exports = router;

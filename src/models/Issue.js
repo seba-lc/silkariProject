@@ -18,6 +18,7 @@ const IssueSchema = new Schema({
     lowercase: true,
     enum: ['yes', 'no', 'contractor'],
     trim: true,
+    default: 'no',
     maxlength: 15,
     minlength: 2
   },
@@ -29,10 +30,10 @@ const IssueSchema = new Schema({
     minlength: 5,
     maxlength: 50
   },
-  partsUsed: { //A esto lo linkeo con el modelo ProductUsed.
-    type: [Schema.Types.ObjectId],
-    default: []
-  },
+  partsUsed: [{ //A esto lo linkeo con el modelo ProductUsed.
+    type: Schema.Types.ObjectId,
+    ref: 'Stock'
+  }],
   updates: [{ //voy a generar desde el frontend un comentario que venga con la fecha (dos entradas del front y una salida para el back)
     type: String,
     trim: true,

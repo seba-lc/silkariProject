@@ -1,19 +1,10 @@
 const { model, Schema } = require('mongoose');
 
 const StockSchema = new Schema({
-  productName: {
-    type: String,
-    required: true,
-    trim: true,
-    lowercase: true,
-    minlength: 3,
-    maxlength: 50
-  },
-  productCode: {
-    type: String, 
-    required: true,
-    trim: true,
-    maxlength: 40
+  item: {
+    type: Schema.Types.ObjectId,
+    ref: 'Item',
+    required: true
   },
   area: {
     type: String,
@@ -41,7 +32,6 @@ const StockSchema = new Schema({
     type: String,
     required: true,
     trim: true,
-    unique: true,
     minlength: 5,
     maxlength: 50
   }

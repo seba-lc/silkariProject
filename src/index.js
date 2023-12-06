@@ -9,6 +9,7 @@ const issueRouter = require('./routes/issues.routes');
 const roomRouter = require('./routes/rooms.routes');
 const itemRouter = require('./routes/items.routes');
 const stockRouter = require('./routes/stock.routes');
+const { createRooms } = require('./helpers/helpers');
 
 const app = express();
 require('dotenv').config();

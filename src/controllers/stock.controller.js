@@ -2,7 +2,7 @@ const Stock = require('../models/Stock');
 
 const stockCtrl = {};
 
-/* productName, productCode, area, entryQuantity, entryDate, sign */
+/* item, area, entryQuantity, entryDate, sign */
 stockCtrl.productEntry = async (req, res) => {
   try {
     const newInput = new Stock(req.body);
@@ -22,7 +22,7 @@ stockCtrl.productEntry = async (req, res) => {
 /*productCode*/
 stockCtrl.getStockByCode = async (req, res) => {
   try {
-    const stock = await Stock.find({ productCode: req.params.productCode });
+    const stock = await Stock.find({ item: req.params.productCode }).populate('item', '-_id itemName');
     res.status(200).json(stock);
   } catch (error) {
     console.log(error);

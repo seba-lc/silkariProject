@@ -12,21 +12,23 @@ const BookingSchema = new Schema({
   arrivalDate: {
     type: String,
     trim: true,
+    required: true,
     maxlength: 10,
     minlength: 10
   },
   departureDate: {
     type: String,
     trim: true,
+    required: true,
     maxlength: 10,
     minlength: 10
   },
-  roomAsigned: {
+  roomAsigned: [{
     type: String,
     trim: true,
     minlength: 2,
     maxlength: 3
-  },
+  }],
   arrivalTime: {
     type: String,
     trim: true,
@@ -37,12 +39,11 @@ const BookingSchema = new Schema({
     type: String,
     required: true,
     trim: true,
-    unique: true,
     minlength: 5,
     maxlength: 50
   },
   phoneContact: {
-    type: Number,
+    type: String,
     trim: true
   }
 }, {
