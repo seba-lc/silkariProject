@@ -16,29 +16,26 @@ const IssueSchema = new Schema({
   status: {
     type: String,
     lowercase: true,
-    enum: ['yes', 'no', 'contractor'],
+    enum: ['done', 'not-done', 'contractor'],
     trim: true,
-    default: 'no',
+    default: 'not-done',
     maxlength: 15,
     minlength: 2
   },
-  maintSign: { //userEmail
+  sign: { //userEmail
     type: String,
     required: true,
     trim: true,
-    unique: true,
-    minlength: 5,
+    minlength: 3,
     maxlength: 50
   },
-  partsUsed: [{ //A esto lo linkeo con el modelo ProductUsed.
+  partsUsed: [{ //A esto lo linkeo con el modelo Stock.
     type: Schema.Types.ObjectId,
     ref: 'Stock'
   }],
-  updates: [{ //voy a generar desde el frontend un comentario que venga con la fecha (dos entradas del front y una salida para el back)
-    type: String,
-    trim: true,
-    lowercase: true,
-    maxlength: 300
+  updates: [{ //voy a generar desde el frontend un comentario que venga con la fecha (dos entradas del front y una salida para el back). Aunque estoy pensando que debería tener una firma también el update
+    type: Schema.Types.ObjectId,
+    ref: 'IssueUpdate'
   }],
   roomAsigned: {
     type: String,

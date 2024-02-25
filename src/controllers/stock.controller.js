@@ -30,7 +30,19 @@ stockCtrl.getStockByCode = async (req, res) => {
       message: 'Error, try again later'
     })
   }
-} 
+}
+
+stockCtrl.getAllStock = async (req, res) => {
+  try {
+    const stock = await Stock.find().populate('item', 'itemName');
+    res.status(200).json(stock);
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({
+      message: 'Error, try again later'
+    })
+  }
+}
 
 stockCtrl.deleteEntry = async (req, res) => {
   try {
@@ -38,6 +50,18 @@ stockCtrl.deleteEntry = async (req, res) => {
     res.status(200).json({
       message: 'Entry deleted'
     })
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({
+      message: 'Error, try again later'
+    })
+  }
+}
+
+stockCtrl.checkStockByItem = async (itemId) => {
+  try {
+    const response = await Stock.find({item: itemId});
+    return response;
   } catch (error) {
     console.log(error);
     res.status(400).json({

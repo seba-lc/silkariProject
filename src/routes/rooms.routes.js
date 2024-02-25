@@ -8,15 +8,15 @@ const { createRoom, getAllRooms, updateRoom, deleteAllRooms, createSilkariRooms 
 
 router.route('/')
   .post(checkToken, createRoom)
-  .get(checkToken, getAllRooms);
+  .get(/*checkToken,*/ getAllRooms);
 
 router.route('/edit')
-  .post(checkToken, updateRoom); // AL PARECER EL EDIT NO ES CON PUT Y ES CON POST
+  .post(/*checkToken,*/ updateRoom); // AL PARECER EL EDIT NO ES CON PUT Y ES CON POST
 
 router.route('/delete')
-  .delete(checkToken, deleteAllRooms);
+  .delete(/*checkToken,*/ deleteAllRooms);
 
 router.route('/silkarirooms')
-  .get(checkToken, createSilkariRooms);
+  .get(/*checkToken,*/ createSilkariRooms);
 
 module.exports = router;

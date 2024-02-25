@@ -7,7 +7,7 @@ const router = Router();
 const { createNewItem, getAllItems } = itemCtrl;
 
 router.route('/')
-  .post(checkToken, createNewItem)
-  .get(checkToken, getAllItems);
+  .post(/*checkToken,*/ createNewItem)
+  .get(/*checkToken,*/ getAllItems);
 
 module.exports = router;

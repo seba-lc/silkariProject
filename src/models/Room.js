@@ -5,8 +5,16 @@ const RoomSchema = new Schema({
     type: String,
     trim: true,
     required: true,
-    minlength: 2,
-    maxlength: 30,
+    minlength: 1,
+    maxlength: 3,
+    uppercase: true
+  },
+  side: {
+    type: String,
+    trim: true,
+    required: true,
+    minlength: 1,
+    maxlength: 2,
     uppercase: true
   },
   roomStatus: {

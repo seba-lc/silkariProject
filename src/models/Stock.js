@@ -11,6 +11,7 @@ const StockSchema = new Schema({
     lowercase: true,
     required: true,
     enum: ['housekeeping', 'maintenance'],
+    default: 'maintenance',
     trim: true,
     maxlength: 15,
     minlength: 2
@@ -32,7 +33,7 @@ const StockSchema = new Schema({
     type: String,
     required: true,
     trim: true,
-    minlength: 5,
+    minlength: 3,
     maxlength: 50
   }
 }, {

@@ -4,13 +4,14 @@ const { checkToken } = require('../middlewares/auth');
 
 const router = Router();
 
-const { getStockByCode, productEntry, deleteEntry } = stockCtrl;
+const { getStockByCode, productEntry, deleteEntry, getAllStock } = stockCtrl;
 
 router.route('/:productCode')
-  .get(checkToken, getStockByCode);
+  .get(/*checkToken,*/ getStockByCode);
 
 router.route('/')
-  .post(checkToken, productEntry);
+  .post(/*checkToken,*/ productEntry)
+  .get(/*checkToken,*/ getAllStock);
 
 router.route('/:id')
   .delete(checkToken, deleteEntry);

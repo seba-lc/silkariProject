@@ -21,8 +21,8 @@ roomCtrl.createRoom = async (req, res) => {
 roomCtrl.createSilkariRooms = async (req, res) => {
   try {
     for(let i=1; i<90; i++) {
-      const newARoom = new Room({room: i.toString() + 'A'});
-      const newBRoom = new Room({room: i.toString() + 'B'});
+      const newARoom = new Room({room: i.toString(), side: 'A'});
+      const newBRoom = new Room({room: i.toString(), side: 'B'});
       await newARoom.save();
       await newBRoom.save();
     }

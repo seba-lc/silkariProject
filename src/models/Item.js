@@ -7,7 +7,8 @@ const ItemSchema = new Schema({
     trim: true,
     uppercase: true,
     minlength: 2,
-    maxlength: 35
+    maxlength: 35,
+    unique: true
   }
 }, {
   timestamps: true,

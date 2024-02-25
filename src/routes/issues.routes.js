@@ -7,16 +7,16 @@ const router = Router();
 const { createIssue, updateIssue, getAllIssues, getIssuesByRoomAsigned } = issueCtrl;
 
 router.route('/')
-  .post(checkToken, createIssue);
+  .post(/*checkToken,*/ createIssue);
 
 router.route('/room/:room')
   .get(checkToken, getIssuesByRoomAsigned);
 
 router.route('/all')
-  .get(checkToken, getAllIssues);
+  .get(/*checkToken,*/ getAllIssues);
 
 router.route('/update')
-  .post(checkToken, updateIssue); //DE NUEVO, AL PARECER EL UPDATE SE HACE CON EL POST NO CON EL PUT.
+  .post(/*checkToken,*/ updateIssue); //DE NUEVO, AL PARECER EL UPDATE SE HACE CON EL POST NO CON EL PUT.
 
 module.exports = router;
 
